@@ -1,0 +1,18 @@
+form {
+  margin: 20px;
+}
+
+md-form-field {
+  display: block;
+  width: 100%;
+}
+md-radio-group {
+  display: block;
+  width: 100%;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+button {
+  margin: 20px 0px;
+}

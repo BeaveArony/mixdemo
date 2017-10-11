@@ -1,0 +1,10 @@
+<h2 md-dialog-title>Resolve Ticket</h2>
+<md-dialog-content>
+  <md-form-field>
+    <input mdInput [formControl]="form" placeholder="Reason">
+  </md-form-field>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button (click)="resolve()" [disabled]="form.invalid">Resolve</button>
+  <button md-button (click)="cancel()">Cancel</button>
+</md-dialog-actions>

@@ -1,0 +1,38 @@
+<md-toolbar>
+  <h2>Tickets [Support]</h2>
+  <span class="example-spacer"></span>
+  <a routerLink="/people">People</a>
+</md-toolbar>
+
+<md-card *ngFor="let t of tickets | async">
+  <md-card-header>
+    <md-card-title><h3>{{t.title}}</h3></md-card-title>
+    <md-card-subtitle>
+      Submitted by: {{t.userName}}
+      <div *ngIf="t.status === 'unassigned'">
+        Unassigned
+      </div>
+      <div *ngIf="t.status === 'assigned' && t.assigneeId !== currentUserId">
+        Assigned to: {{t.assigneeName}}
+      </div>
+      <div *ngIf="t.status === 'assigned' && t.assigneeId === currentUserId">
+        Assigned to: <b>you</b>
+      </div>
+      <div *ngIf="t.status === 'resolved'">
+        Resolved: {{t.reason}}
+      </div>
+    </md-card-subtitle>
+  </md-card-header>
+
+  <md-card-content>
+    <p>{{t.description}}</p>
+  </md-card-content>
+  <md-card-actions>
+    <div *ngIf="t.status === 'unassigned'">
+      <button md-button (click)="assign(t.id)">ASSIGN</button>
+    </div>
+    <div *ngIf="t.status === 'assigned' && t.assigneeId === currentUserId">
+      <button md-button (click)="resolve(t.id)">RESOLVE</button>
+    </div>
+  </md-card-actions>
+</md-card>

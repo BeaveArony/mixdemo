@@ -1,0 +1,23 @@
+<md-toolbar>
+  <h2>Tickets</h2>
+  <span class="example-spacer"></span>
+  <a routerLink="/submit">Submit Ticket</a>
+</md-toolbar>
+
+<md-card *ngFor="let t of tickets | async">
+  <md-card-header>
+    <md-card-title><h3>{{t.title}}</h3></md-card-title>
+    <md-card-subtitle>
+      Submitted by: {{t.userName}}
+      <div *ngIf="t.status === 'assigned'">
+        Assigned to: {{t.assigneeName}}
+      </div>
+      <div *ngIf="t.status === 'resolved'">
+        Resolved
+      </div>
+    </md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <p>{{t.description}}</p>
+  </md-card-content>
+</md-card>

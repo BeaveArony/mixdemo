@@ -1,0 +1,21 @@
+<md-toolbar>
+  <h2>Submit a Ticket</h2>
+  <span class="example-spacer"></span>
+  <a routerLink="/tickets">Tickets</a>
+</md-toolbar>
+
+<form [formGroup]="form" (submit)="submitTicket()">
+  <md-form-field>
+    <input mdInput placeholder="Title" formControlName="title">
+  </md-form-field>
+  <md-form-field>
+    <textarea mdInput placeholder="Description" formControlName="description"></textarea>
+  </md-form-field>
+
+  <md-radio-group formControlName="severity">
+    <md-radio-button>Low</md-radio-button>
+    <md-radio-button>High</md-radio-button>
+  </md-radio-group>
+
+  <button md-raised-button color="primary" [disabled]="form.invalid">Submit</button>
+</form>
